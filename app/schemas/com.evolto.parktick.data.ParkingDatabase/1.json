@@ -1,0 +1,212 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "7daed7fa0f031f950d6c30848dab052f",
+    "entities": [
+      {
+        "tableName": "active_parking",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `plate` TEXT NOT NULL, `startWallMs` INTEGER NOT NULL, `startElapsedMs` INTEGER NOT NULL, `startBootCount` INTEGER, `photoName` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plate",
+            "columnName": "plate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startWallMs",
+            "columnName": "startWallMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startElapsedMs",
+            "columnName": "startElapsedMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startBootCount",
+            "columnName": "startBootCount",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "photoName",
+            "columnName": "photoName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_active_parking_plate",
+            "unique": true,
+            "columnNames": [
+              "plate"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_active_parking_plate` ON `${TABLE_NAME}` (`plate`)"
+          },
+          {
+            "name": "index_active_parking_photoName",
+            "unique": true,
+            "columnNames": [
+              "photoName"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_active_parking_photoName` ON `${TABLE_NAME}` (`photoName`)"
+          }
+        ]
+      },
+      {
+        "tableName": "parking_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `plate` TEXT NOT NULL, `startWallMs` INTEGER NOT NULL, `startElapsedMs` INTEGER NOT NULL, `startBootCount` INTEGER, `endWallMs` INTEGER NOT NULL, `durationMs` INTEGER, `durationBasis` TEXT NOT NULL, `clockChanged` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plate",
+            "columnName": "plate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startWallMs",
+            "columnName": "startWallMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startElapsedMs",
+            "columnName": "startElapsedMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startBootCount",
+            "columnName": "startBootCount",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "endWallMs",
+            "columnName": "endWallMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "durationMs",
+            "columnName": "durationMs",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "durationBasis",
+            "columnName": "durationBasis",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clockChanged",
+            "columnName": "clockChanged",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_parking_history_plate",
+            "unique": false,
+            "columnNames": [
+              "plate"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_parking_history_plate` ON `${TABLE_NAME}` (`plate`)"
+          },
+          {
+            "name": "index_parking_history_endWallMs",
+            "unique": false,
+            "columnNames": [
+              "endWallMs"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_parking_history_endWallMs` ON `${TABLE_NAME}` (`endWallMs`)"
+          }
+        ]
+      },
+      {
+        "tableName": "pending_photo_deletions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recordId` TEXT NOT NULL, `photoName` TEXT NOT NULL, PRIMARY KEY(`recordId`), FOREIGN KEY(`recordId`) REFERENCES `parking_history`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "recordId",
+            "columnName": "recordId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photoName",
+            "columnName": "photoName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "recordId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_pending_photo_deletions_photoName",
+            "unique": true,
+            "columnNames": [
+              "photoName"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_pending_photo_deletions_photoName` ON `${TABLE_NAME}` (`photoName`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "parking_history",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "recordId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7daed7fa0f031f950d6c30848dab052f')"
+    ]
+  }
+}

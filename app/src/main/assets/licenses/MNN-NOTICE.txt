@@ -1,0 +1,5 @@
+MNN 2.9.6
+Copyright © 2018, Alibaba Group Holding Limited
+Licensed under the Apache License, Version 2.0.
+Full license: HyperLPR-Apache-2.0.txt
+Source declaration: https://github.com/alibaba/MNN/blob/a74551b4f34b46ce7027c64e800d49fcab497261/MNN.podspec

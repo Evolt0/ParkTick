@@ -1,0 +1,37 @@
+{
+  "hyperlpr": {
+    "commit": "9307450f7b7915be18f23a539ec05b41fe6629f4",
+    "archiveSha256": "40fe119e652ac0241a27f6cf868a11773e9e19777b0a6a63f594c78f46d77f68",
+    "license": "Apache-2.0",
+    "url": "https://github.com/szad670401/HyperLPR"
+  },
+  "mnn": {
+    "version": "2.9.6",
+    "commit": "a74551b4f34b46ce7027c64e800d49fcab497261",
+    "archiveSha256": "71d8b91234a3249c948c5b1f2445d5eabc9e3a9b5e5fd0a676d79e17050db3d1",
+    "license": "Apache-2.0",
+    "url": "https://github.com/alibaba/MNN"
+  },
+  "opencv": {
+    "version": "4.10.0",
+    "commit": "71d3237a093b60a27601c20e9ee6c3e52154e8b1",
+    "archiveSha256": "4c7f5fb9c7e0b5fcac4363302212f11323509eccb3af0dd46783242b9bbc1da6",
+    "license": "Apache-2.0",
+    "url": "https://github.com/opencv/opencv"
+  },
+  "modelSource": {
+    "repository": "https://github.com/HyperInspire/hyperlpr3-android-sdk",
+    "tag": "1.0.3",
+    "commit": "2c87e056dce87a9edcb93a7fe0096a132c3a59ca",
+    "directory": "hyperlpr3/src/main/assets/r2_mobile",
+    "licenseDeclaration": "Repository Apache-2.0; no separate model card or model license supplied upstream"
+  },
+  "models": {
+    "b320_backbone_h.mnn": "93beca2566ccc8ad7fb5e5ce1bd87d158c3f1b2a6b48c1380366abcf9f2c6f66",
+    "b320_header_h.mnn": "b2b5c4126aaad2c80901ddb8693005d73bc9856a80803dae9c7d598033273841",
+    "b640x_backbone_h.mnn": "954d1592af55297f12cd82847365c47dbe5cc5a07aff54aacf8f49a91784bf37",
+    "b640x_head_h.mnn": "ab946655fdbd0f9f8ee4efa51ad3765f8fe757b12ce658d6944d3fb1df7eacea",
+    "litemodel_cls_96xh.mnn": "0bbf5aeee7e4d36be2b545cade9c025d70e0d0a2465dd701238eea617c9eadb8",
+    "rpv3_mdict_160h.mnn": "daa9ed4e674eded73ff51bfca528acec35edbbb63a500be65c49f74e5739e043"
+  }
+}

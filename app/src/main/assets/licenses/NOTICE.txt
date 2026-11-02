@@ -1,0 +1,31 @@
+ParkTick third-party notices
+
+HyperLPR core and r2_mobile models
+Source: https://github.com/szad670401/HyperLPR
+Commit: 9307450f7b7915be18f23a539ec05b41fe6629f4
+License: upstream repository Apache License 2.0 (HyperLPR-Apache-2.0.txt).
+Changes: the application uses its own resource-safe JNI bridge. The context factory uses scoped ownership during initialization. Detector initialization forwards its thread count correctly and inference explicitly selects the CPU backend. Old upstream JNI/precompiled Android libraries are not linked.
+The recognition decoder uses bounded CTC prefix beam search, independently classified ordinary-plate length constraints, finite nonnegative row normalization, and normalized alignment confidence. Undefined dictionary labels, invalid tensors and empty/impossible paths are rejected; reused recognition output is cleared. These are local source modifications, not changes to the bundled training weights.
+The upstream repository does not provide a separate model card or a separate model license; the distribution follows its repository license declaration without making warranties about training data or model accuracy.
+
+MNN 2.9.6
+Source: https://github.com/alibaba/MNN
+Commit: a74551b4f34b46ce7027c64e800d49fcab497261
+Copyright © 2018, Alibaba Group Holding Limited
+Apache License 2.0. See MNN-NOTICE.txt and the full Apache license text.
+Bundled component notices: flatbuffers, half, Skia-derived image processing, TensorFlow-derived components. The relevant upstream license texts are included alongside this file.
+
+OpenCV 4.10.0
+Source: https://github.com/opencv/opencv
+Commit: 71d3237a093b60a27601c20e9ee6c3e52154e8b1
+Apache License 2.0. See OpenCV-LICENSE.txt.
+Only core and imgproc modules are built, including ARM Carotene acceleration. Accompanying zlib, Android CPU feature and Carotene/FAST notices are included.
+
+Android NDK r28c C++ runtime
+The NDK-provided toolchain notices are preserved in NDK-NOTICE.toolchain. The redistributed runtime is libc++_shared.so; references to other upstream toolchain utilities do not imply that these utilities are shipped in this APK.
+
+JVM and Android libraries
+AndroidX (Android Open Source Project), Kotlin and kotlinx (JetBrains and contributors), Guava ListenableFuture, AutoValue annotations (Copyright (C) 2012 Google, Inc.), JetBrains annotations and JSpecify use Apache License 2.0 as declared in their Maven POMs or inherited parent declarations. The full Apache license is included in HyperLPR-Apache-2.0.txt. Maven-DEPENDENCIES.txt records the release runtime dependency coordinates, including metadata-only BOMs; not every listed artifact contributes executable code.
+Sources: https://android.googlesource.com/platform/frameworks/support/ ; https://github.com/JetBrains/kotlin ; https://github.com/Kotlin/kotlinx.coroutines ; https://github.com/Kotlin/kotlinx.serialization ; https://github.com/google/guava ; https://github.com/google/auto ; https://github.com/JetBrains/java-annotations ; https://github.com/jspecify/jspecify
+
+Source archive and model SHA-256 values are recorded in third_party/sources.lock.json in the application source distribution.
