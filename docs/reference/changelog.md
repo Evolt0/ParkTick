@@ -1,5 +1,12 @@
 # ParkTick 变更记录
 
+## v1.0.0-preview.1：首个可安装 APK 预发布
+
+- 在 [GitHub Release](https://github.com/Evolt0/ParkTick/releases/tag/v1.0.0-preview.1) 分发 `ParkTick-1.0.0-preview.1.apk` 与 `SHA256SUMS`，根目录 README 提供直接下载入口。
+- 发布本轮已验证的 R8、ARM64 / ARMv7 测试签名 APK，不重新签名或修改字节；APK SHA-256 为 `6fac51ae89f13c1d073ce4bdf54c6cb7a120ac59b41ac019fe547ec5fcab0067`。
+- 仅补齐 APK 分发、发布说明和安装 / 覆盖升级提示，业务源码与应用内版本 `1.0.0`（versionCode 1）不变。
+- 保留预发布标记和识别质量、目标双机、原生 ARM / 16KB、黄牌样本与生产签名的未关闭条件；不将可下载包标为正式验收通过。
+
 ## 2026-11-02：可达环境完整回归与修复（未正式验收）
 
 - 原绿牌漏字改用有界 CTC 前缀束搜索修复，保持真实模型与原精确期望；处理重复字符、复用结果重置、非法张量和未定义标签，按有效行归一化 MNN 浮点输出与置信度，不注入样本字符。

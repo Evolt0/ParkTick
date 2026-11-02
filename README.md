@@ -6,6 +6,14 @@
 
 > 当前为开发验证版本，不是正式验收完成版本。业务源码与可安装 APK 已实现，可达环境回归已通过；目标双机实测和识别质量验收仍未关闭，详见[当前限制](#当前限制)。
 
+## 下载测试 APK
+
+**[下载 ParkTick 1.0.0 Preview 1 APK](https://github.com/Evolt0/ParkTick/releases/download/v1.0.0-preview.1/ParkTick-1.0.0-preview.1.apk)** · [预发布说明与 SHA-256 校验文件](https://github.com/Evolt0/ParkTick/releases/tag/v1.0.0-preview.1)
+
+从 Release 的 Assets 下载 `.apk`，不要把 Source code 归档当作安装包。二进制通过 GitHub Releases 分发，不提交到 Git 源码仓库；仓库为私有时，需要登录有访问权限的 GitHub 账号。
+
+这是测试签名的预发布包，用于实机测试，不代表正式验收完成。安装与覆盖升级注意事项见预发布说明；不要为安装直接卸载或清除已有停车数据。
+
 ## 主要功能
 
 - **拍照后确认车牌**：识别结果在可编辑弹窗中展示；有误可直接修改，未识别出可填写或重拍，确认前不创建停车记录。
@@ -64,7 +72,7 @@ rtk proxy adb -s <serial> install -r app/build/outputs/apk/debug/app-debug.apk
 rtk proxy adb -s <serial> shell am start -n com.evolto.parktick/.MainActivity
 ```
 
-首次拍照需要授予相机权限。APK 为本地构建产物，未随 Git 源码提交。
+首次拍照需要授予相机权限。
 
 ### 3. Release 构建
 
